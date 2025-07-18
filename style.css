@@ -307,8 +307,7 @@ body {
      animation: glowShadow 2.5s ease-in-out infinite;
 
 }
-.card-front.flipped {
+.card-front{
    animation: floatIdle 3s ease-in-out infinite;
 }
-
 
