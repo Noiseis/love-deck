@@ -1,0 +1,314 @@
+body {
+  font-family: 'Pacifico', cursive;
+  background: #ffd1dc  ;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  overflow: hidden; /* Prevents scrollbars during animations */}
+
+h1 {
+  margin-bottom: 0.5rem;
+  color: #fc6c85;
+  font-family: 'Great Vibes';
+}
+
+button {
+  background-color: #fc8eac;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  transition: transform 0.2s ease-out;
+       overflow: hidden; 
+      border-radius: 16px;
+  box-shadow: 0 0 12px rgba(255, 105, 135, 0.9);
+}
+
+button:hover {
+  transform: translateY(-3px);
+}
+
+.deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.card {
+  width: 330px;
+  height: 450px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 10px;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: translateY(-8px);
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.card-front {
+  background:  #FFA2B9 ;
+  color: white;
+  font-size: 1.2rem;
+    overflow: hidden; 
+    border-radius: 16px;
+  box-shadow: 0 0 12px rgba(255, 105, 135, 0.9);
+}
+
+/* Updated Card Back Layout */
+.card-back {
+  background-color: #fff;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to top */
+  padding: 10px;
+  gap: 5px; /* Space between image and text */
+}
+
+.card-back img {
+  width: 100%;
+  max-height: 60%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-back p {
+  font-family: 'Satisfy', cursive;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes flyInLeft {
+  from { opacity: 0; transform: translateX(-200px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes flyInRight {
+  from { opacity: 0; transform: translateX(200px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes flyUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100px); opacity: 0; }
+}
+
+
+
+.card-front {
+  font-size: 1.5rem; /* Slightly larger text */
+}
+
+.card-back img {
+  width: 100%;
+  height: auto;
+  max-height: 80%; /* Increase height to fill more space */
+  object-fit: cover; /* Fills box and crops slightly if needed */
+  border-radius: 20px;
+  margin-top: 1px;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+
+.card-back p {
+  font-size: 1.4rem; /* Adjust text size to match larger cards */
+}
+
+#hearts-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.heart-svg {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  animation: floatUp 4s linear forwards;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+
+
+.heart-svg.fade-out {
+  animation: fadeOut 2s ease-out forwards;
+}
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: floatUp 5s linear forwards;
+}
+@media (max-width: 768px) {
+  body {
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fff4f7;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 1rem 0 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .deck {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100vh - 180px); /* fits below title and above button */
+  }
+
+  .deck::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 92vw;
+    height: 100%;
+    scroll-snap-align: center;
+    opacity: 1 !important;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+
+  .card-front {
+    font-size: 1.4rem;
+  }
+
+  .card-back p {
+    font-size: 1.2rem;
+  }
+
+  #shuffleBtn {
+    margin: 1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    background-color: #d6336c;
+    color: white;
+    border: none;
+  }
+}
+body {
+  cursor: url('hhttps://cdn-icons-png.flaticon.com/512/833/833472.png') , auto !important; 
+}
+
+.petal-svg {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  animation: petal-fall 2.5s ease-out forwards;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.petal-svg svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--rot));
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(calc(var(--rot) + 360deg));
+    opacity: 0;
+  }
+}
+@keyframes floatIdle {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes glowShadow {
+  0%   { box-shadow: 0 0 8px 2px rgba(255, 105, 135, 0.8); }
+  50%  { box-shadow: 0 0 20px 6px rgba(255, 105, 135, 1); }
+  100% { box-shadow: 0 0 8px 2px rgba(255, 105, 135, 0.8); }
+}
+.card-back:not(.flipped), button:hover{
+     animation: glowShadow 2.5s ease-in-out infinite;
+
+}
+.card-front.flipped {
+   animation: floatIdle 3s ease-in-out infinite;
+}
+
+
