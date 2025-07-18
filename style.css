@@ -42,7 +42,7 @@ button:hover {
 
 .card {
   width: 330px;
-  height: 450px;
+  height: 420px;
   perspective: 1000px;
   cursor: pointer;
   margin: 10px;
