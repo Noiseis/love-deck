@@ -6,11 +6,6 @@ const heartsContainer = document.getElementById("hearts-container");
 const messageHistory = [];
 const imageHistory = [];
 const HISTORY_LIMIT = 9; // 3 cards x 3 cycles
-const petalSVG = `
-  <svg viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 0 C14 0, 20 10, 10 30 C0 10, 6 0, 10 0"
-          fill="#ffc2d1" />
-  </svg>`;
 
 function randomPetalColor() {
   const colors = ['#ffc2d1', '#ffdde1', '#ffe3ec', '#fbb1bd', '#ffa8c9'];
@@ -39,7 +34,6 @@ function createFallingPetals(x, y) {
     petal.style.setProperty('--dy', `${dy + 80}px`);
     petal.style.setProperty('--rot', `${Math.random() * 360}deg`);
 
-    // Generate SVG with the randomized fill color
     petal.innerHTML = `
       <svg viewBox="0 0 20 30" xmlns="http://www.w3.org/2000/svg">
         <path d="M10 0 C14 0, 20 10, 10 30 C0 10, 6 0, 10 0"
@@ -328,7 +322,6 @@ shuffleBtn.addEventListener("click", () => {
 
 });
 const nextMusicBtn = document.getElementById("nextMusicBtn");
-
 nextMusicBtn.addEventListener("click", () => {
   fadeOutAndShuffleMusic();
 });

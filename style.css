@@ -1,11 +1,23 @@
+* {
+  cursor: inherit !important;
+}
+
+
 body {
   font-family: 'Pacifico', cursive;
-  background: #ffd1dc  ;
+  background: #ffd1dc;
   margin: 0;
   padding: 2rem;
   text-align: center;
-  overflow: hidden; /* Prevents scrollbars during animations */}
+  overflow: hidden;
+  cursor: url('heart.cur'), auto;
 
+}
+body {
+  cursor: -webkit-image-set(url('heart.png') 3x), auto !important;
+}
+
+  
 h1 {
   margin-bottom: 0.5rem;
   color: #fc6c85;
@@ -42,7 +54,7 @@ button:hover {
 
 .card {
   width: 330px;
-  height: 450px;
+  height: 420px;
   perspective: 1000px;
   cursor: pointer;
   margin: 10px;
@@ -137,14 +149,14 @@ button:hover {
 
 
 .card-front {
-  font-size: 1.5rem; /* Slightly larger text */
+  font-size: 1.5rem; 
 }
 
 .card-back img {
   width: 100%;
   height: auto;
-  max-height: 80%; /* Increase height to fill more space */
-  object-fit: cover; /* Fills box and crops slightly if needed */
+  max-height: 80%; 
+  object-fit: cover;
   border-radius: 20px;
   margin-top: 1px;
   justify-content: space-between;
@@ -153,7 +165,7 @@ button:hover {
 
 
 .card-back p {
-  font-size: 1.4rem; /* Adjust text size to match larger cards */
+  font-size: 1.4rem;
 }
 
 #hearts-container {
@@ -230,7 +242,7 @@ button:hover {
     padding: 0 1rem;
     box-sizing: border-box;
     width: 100%;
-    height: calc(100vh - 180px); /* fits below title and above button */
+    height: calc(100vh - 180px); 
   }
 
   .deck::-webkit-scrollbar {
@@ -307,7 +319,7 @@ body {
      animation: glowShadow 2.5s ease-in-out infinite;
 
 }
-.card-front.flipped {
+.card-front{
    animation: floatIdle 3s ease-in-out infinite;
 }
 
