@@ -114,7 +114,27 @@ const imagePaths = [
     "images/20.jpg",
     "images/21.jpg",
     "images/22.jpg",
-    "images/23.jpg"
+    "images/23.jpg",
+    "images/24.jpg",
+    "images/25.jpg",
+    "images/26.jpg",
+    "images/27.jpg",
+    "images/28.jpg",
+
+    "images/29.jpg",
+    "images/30.jpg",
+    "images/31.jpg",
+    "images/32.jpg",
+    "images/33.jpg",
+    "images/34.jpg",
+    "images/35.jpg",
+    "images/36.jpg",
+    "images/37.jpg",
+    "images/38.jpg",
+    "images/39.jpg",
+    "images/40.jpg",
+    "images/41.jpg",
+    "images/42.jpg"
 ];
 
 let cards = []; // leave this empty — we will fill it later
@@ -240,7 +260,21 @@ const musicFiles = [
     "music/love11.mp3",
     "music/love12.mp3",
     "music/love13.mp3",
-    "music/love14.mp3"
+    "music/love14.mp3",
+    "music/love15.mp3",
+    "music/love16.mp3",
+    "music/love17.mp3",
+    "music/love18.mp3",
+    "music/love19.mp3",
+    "music/love20.mp3",
+    "music/love21.mp3",
+    "music/love22.mp3",
+    "music/love23.mp3",
+    "music/love24.mp3",
+    "music/love25.mp3",
+    "music/love26.mp3",
+    "music/love27.mp3",
+    "music/love28.mp3"
 
 ];
 let musicStarted = false;
