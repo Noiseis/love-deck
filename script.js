@@ -252,49 +252,32 @@ function randomColor() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-
-// === START: NEW MUSIC PLAYER LOGIC ===
-
 function updatePlayerUI(songPath) {
-    fetch(songPath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            window.jsmediatags.read(blob, {
-                onSuccess: (tag) => {
-                    const tags = tag.tags;
-                    songTitle.textContent = tags.title || songPath.split('/').pop().replace(/\.mp3/i, '');
-                    playingStatus.textContent = tags.artist || "Now Playing";
-                    checkTitleOverflow();
-                    if (tags.picture) {
-                        const { data, format } = tags.picture;
-                        let base64String = "";
-                        for (let i = 0; i < data.length; i++) {
-                            base64String += String.fromCharCode(data[i]);
-                        }
-                        albumArt.src = `data:${format};base64,${window.btoa(base64String)}`;
-                    } else {
-                        albumArt.src = defaultAlbumArt;
-                    }
-                },
-                onError: (error) => {
-                    console.warn('Could not read metadata:', error);
-                    songTitle.textContent = songPath.split('/').pop().replace(/\.mp3/i, '');
-                    playingStatus.textContent = "Now Playing";
-                    albumArt.src = defaultAlbumArt;
+    const songUrl = new URL(songPath, window.location.href).href;
+    window.jsmediatags.read(songUrl, {
+        onSuccess: (tag) => {
+            const tags = tag.tags;
+            songTitle.textContent = tags.title || songPath.split('/').pop().replace(/\.mp3/i, '');
+            playingStatus.textContent = tags.artist || "Now Playing";
+            checkTitleOverflow();
+            if (tags.picture) {
+                const { data, format } = tags.picture;
+                let base64String = "";
+                for (let i = 0; i < data.length; i++) {
+                    base64String += String.fromCharCode(data[i]);
                 }
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching song for metadata:', error);
+                albumArt.src = `data:${format};base64,${window.btoa(base64String)}`;
+            } else {
+                albumArt.src = defaultAlbumArt;
+            }
+        },
+        onError: (error) => {
+            console.warn('Could not read metadata:', error);
             songTitle.textContent = songPath.split('/').pop().replace(/\.mp3/i, '');
-            playingStatus.textContent = "Error loading song";
+            playingStatus.textContent = "Now Playing";
             albumArt.src = defaultAlbumArt;
-        });
+        }
+    });
 }
 
 
