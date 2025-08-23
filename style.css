@@ -2,7 +2,6 @@
   cursor: inherit !important;
 }
 
-
 body {
   font-family: 'Pacifico', cursive;
   background: #ffd1dc;
@@ -11,12 +10,11 @@ body {
   text-align: center;
   overflow: hidden;
   cursor: url('heart.cur'), auto;
-
 }
+
 body {
   cursor: -webkit-image-set(url('heart.png') 3x), auto !important;
 }
-
   
 h1 {
   margin-bottom: 0.5rem;
@@ -34,8 +32,8 @@ button {
   cursor: pointer;
   margin: 0 0.5rem;
   transition: transform 0.2s ease-out;
-       overflow: hidden; 
-      border-radius: 16px;
+  overflow: hidden; 
+  border-radius: 16px;
   box-shadow: 0 0 12px rgba(255, 105, 135, 0.9);
 }
 
@@ -96,19 +94,18 @@ button:hover {
   background:  #FFA2B9 ;
   color: white;
   font-size: 1.2rem;
-    overflow: hidden; 
-    border-radius: 16px;
+  overflow: hidden; 
+  border-radius: 16px;
   box-shadow: 0 0 12px rgba(255, 105, 135, 0.9);
 }
 
-/* Updated Card Back Layout */
 .card-back {
   background-color: #fff;
   transform: rotateY(180deg);
   flex-direction: column;
-  justify-content: flex-start; /* Align content to top */
+  justify-content: flex-start; 
   padding: 10px;
-  gap: 5px; /* Space between image and text */
+  gap: 5px; 
 }
 
 .card-back img {
@@ -130,7 +127,6 @@ button:hover {
   justify-content: center;
 }
 
-/* Animations */
 @keyframes flyInLeft {
   from { opacity: 0; transform: translateX(-200px); }
   to { opacity: 1; transform: translateX(0); }
@@ -146,8 +142,6 @@ button:hover {
   to { transform: translateY(-100px); opacity: 0; }
 }
 
-
-
 .card-front {
   font-size: 1.5rem; 
 }
@@ -162,7 +156,6 @@ button:hover {
   justify-content: space-between;
   padding: 5px;
 }
-
 
 .card-back p {
   font-size: 1.4rem;
@@ -187,20 +180,13 @@ button:hover {
   transition: opacity 1s ease;
 }
 
-
-
 .heart-svg.fade-out {
   animation: fadeOut 2s ease-out forwards;
 }
+
 @keyframes floatUp {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
 }
 
 .floating-heart {
@@ -212,6 +198,7 @@ button:hover {
   z-index: 9999;
   animation: floatUp 5s linear forwards;
 }
+
 @media (max-width: 768px) {
   body {
     margin: 0;
@@ -222,14 +209,12 @@ button:hover {
     flex-direction: column;
     background: #fff4f7;
   }
-
   h1 {
     font-size: 1.6rem;
     margin: 0;
     padding: 1rem 0 0.5rem;
     flex-shrink: 0;
   }
-
   .deck {
     flex-grow: 1;
     display: flex;
@@ -244,11 +229,9 @@ button:hover {
     width: 100%;
     height: calc(100vh - 180px); 
   }
-
   .deck::-webkit-scrollbar {
     display: none;
   }
-
   .card {
     flex: 0 0 92vw;
     height: 100%;
@@ -257,15 +240,8 @@ button:hover {
     margin: 0 auto;
     border-radius: 12px;
   }
-
-  .card-front {
-    font-size: 1.4rem;
-  }
-
-  .card-back p {
-    font-size: 1.2rem;
-  }
-
+  .card-front { font-size: 1.4rem; }
+  .card-back p { font-size: 1.2rem; }
   #shuffleBtn {
     margin: 1rem;
     padding: 0.8rem 1.5rem;
@@ -276,6 +252,7 @@ button:hover {
     border: none;
   }
 }
+
 body {
   cursor: url('hhttps://cdn-icons-png.flaticon.com/512/833/833472.png') , auto !important; 
 }
@@ -295,14 +272,8 @@ body {
 }
 
 @keyframes petal-fall {
-  0% {
-    transform: translate(-50%, -50%) rotate(var(--rot));
-    opacity: 1;
-  }
-  100% {
-    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(calc(var(--rot) + 360deg));
-    opacity: 0;
-  }
+  0% { transform: translate(-50%, -50%) rotate(var(--rot)); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(calc(var(--rot) + 360deg)); opacity: 0; }
 }
 @keyframes floatIdle {
   0%   { transform: translateY(0); }
@@ -315,11 +286,117 @@ body {
   50%  { box-shadow: 0 0 20px 6px rgba(255, 105, 135, 1); }
   100% { box-shadow: 0 0 8px 2px rgba(255, 105, 135, 0.8); }
 }
+
 .card-back:not(.flipped), button:hover{
      animation: glowShadow 2.5s ease-in-out infinite;
-
 }
+
 .card-front{
    animation: floatIdle 3s ease-in-out infinite;
 }
 
+
+/* === START: NEW MUSIC PLAYER STYLES === */
+
+#player-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    transform: translateX(120%); /* Initially hidden */
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+    height: 90px;
+    z-index: 1001; /* Ensure it's on top of other elements */
+}
+
+#player-container.active {
+    transform: translateX(0); /* Slides into view */
+}
+
+#album-art-container {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    margin-right: -45px;
+    z-index: 10;
+}
+
+#album-art {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.album-art-rotating {
+    animation: rotate 12s linear infinite;
+}
+
+.album-art-rotating.paused {
+    animation-play-state: paused;
+}
+
+#info-container {
+    min-width: 150px;
+    height: 60px;
+    padding: 0.5rem 1.5rem 0.5rem 60px; /* Left padding for overlap */
+    transition: background 0.5s ease, color 0.5s ease;
+    background: rgba(255, 105, 135, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+#song-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    margin: 0;
+}
+
+#playing-status {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+#hover-trigger {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  z-index: 1000;
+}
+/* === END: NEW MUSIC PLAYER STYLES === */
